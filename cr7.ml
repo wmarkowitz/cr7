@@ -53,6 +53,7 @@ where a_i is the i'th element of the input stream *)
 let sfold (f: 'a -> 'b -> 'a) (acc: 'a) (str: 'b ok_stream) : 'a ok_stream = failwith "not implemented" ;;
 
 
+(* What happens here? *)
 let rec sfilter (pred : 'a -> bool) (s : 'a ok_stream) : 'a ok_stream =
   fun () ->
     let Cons (h, t) = s () in
@@ -63,6 +64,8 @@ let empty_stream = sfilter (fun x -> x mod 2 == 0) ones ;;
 
 head empty_stream ;;
 
+
+(* Memoization *)
 
 type 'a thunk_internal = 
   | Unevaluated of (unit -> 'a)
