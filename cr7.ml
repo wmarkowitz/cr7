@@ -80,7 +80,7 @@ let rec force (t : 'a thunk) : 'a =
      t := Evaluated (f ());
      force t ;;
 
-let rec tri x = if x <= 1 then 1 else x + tri (x - 1);;
+let rec tri x = if x <= 0 then 0 else x + tri (x - 1);;
 
 
 (* Exercise 2 *)
@@ -96,6 +96,7 @@ Recommended outline:
   3. If it does, then evaluate this found expression
   4. If not, we should create a new entry and add it to the list in memory, then evaluate with our manual expression
 *)
+
 let rec tri_with_lookup: int -> int = failwith "Not implemented";; 
 
 (* For testing, try running 
